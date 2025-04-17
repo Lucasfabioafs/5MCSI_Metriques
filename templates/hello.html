@@ -75,6 +75,9 @@ Pour cela, ajouter le code ci-dessous dans votre fichier __init__.py :
 @app.route("/rapport/")
 def mongraphique():
     return render_template("graphique.html")
+@app.route("/histogramme/")
+def monhisto():
+    return render_template("histogramme.html")
 </xmp></code></pre></p>
 <p>Notions acquises dans cet exercice : Nous avons vu lors de cet exercice comment créer et où déposer les fichiers HTML lorsque l'on utise le Framework Flask.
 Nous avons également découvert que les Framework (cadre de travail) nous imposent une structure de travail où chaque élément doit être à sa place.
