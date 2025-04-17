@@ -10,7 +10,26 @@ import sqlite3
 
 app = Flask(__name__)  
 
+@app.route('/commits/')
+def affichecommits():
+    url = "https://api.github.com/repos/OpenRSI/5MCSI_Metriques/commits"
+    response = requests.get(url)
+    data = response.json()
 
+    minutes_list = []
+    for commit in data:
+        try:
+            date_str = commit["commit"]["author"]["date"]
+            date_obj = datetime.strptime(date_str, '%Y-%m-%dT%H:%M:%SZ')
+            minutes_list.append(date_obj.strftime('%H:%M'))  # ex: 11:57
+        except Exception as e:
+            print(f"Erreur: {e}")
+
+    minute_counts = Counter(minutes_list)
+    minutes = list(minute_counts.keys())
+    counts = list(minute_counts.values())
+
+    return render_template("commits.html", minutes=minutes, counts=counts)
 
         
 @app.route("/rapport/")
