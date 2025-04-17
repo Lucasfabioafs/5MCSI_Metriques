@@ -32,9 +32,11 @@ def affichecommits():
     if not minutes_list:
         return "Aucun commit valide trouvé."
 
+    # 🧠 Tri chronologique
     minute_counts = Counter(minutes_list)
-    minutes = list(minute_counts.keys())
-    counts = list(minute_counts.values())
+    sorted_items = sorted(minute_counts.items(), key=lambda x: datetime.strptime(x[0], "%H:%M"))
+    minutes = [item[0] for item in sorted_items]
+    counts = [item[1] for item in sorted_items]
 
     return render_template("commits.html", minutes=minutes, counts=counts)
 
