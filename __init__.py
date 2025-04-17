@@ -17,7 +17,7 @@ def monhisto():
     return render_template("histogramme.html")
 
 @app.route("/contact/")
-def monhisto():
+def affichecontact():
     return render_template("contact.html")
 
   
