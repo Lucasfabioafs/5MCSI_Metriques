@@ -12,6 +12,8 @@ from collections import Counter
 import requests
 from datetime import datetime
 from flask import render_template, abort
+pip install requests
+
 
 
 app = Flask(__name__)  
