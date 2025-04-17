@@ -78,6 +78,10 @@ def mongraphique():
 @app.route("/histogramme/")
 def monhisto():
     return render_template("histogramme.html")
+
+@app.route("/contact/")
+def affichecontact():
+    return render_template("contact.html")
 </xmp></code></pre></p>
 <p>Notions acquises dans cet exercice : Nous avons vu lors de cet exercice comment créer et où déposer les fichiers HTML lorsque l'on utise le Framework Flask.
 Nous avons également découvert que les Framework (cadre de travail) nous imposent une structure de travail où chaque élément doit être à sa place.
