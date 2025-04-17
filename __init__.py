@@ -12,49 +12,11 @@ from collections import Counter
 import requests
 from datetime import datetime
 from flask import render_template, abort
-pip install requests
+
 
 
 
 app = Flask(__name__)  
-
-@app.route('/commits/')
-def commits():
-    url = "https://api.github.com/repos/OpenRSI/5MCSI_Metriques/commits"
-
-    try:
-        response = requests.get(url)
-        response.raise_for_status()  # S'assure que la réponse est 200 OK
-        data = response.json()
-    except Exception as e:
-        print("Erreur lors de l'appel à l'API GitHub :", e)
-        return abort(500, description="Erreur API GitHub")
-
-    minutes_list = []
-
-    for commit in data:
-        try:
-            # On vérifie si les clés existent
-            date_str = commit.get("commit", {}).get("author", {}).get("date")
-            if date_str:
-                date_obj = datetime.strptime(date_str, '%Y-%m-%dT%H:%M:%SZ')
-                minutes_list.append(date_obj.strftime('%H:%M'))
-        except Exception as e:
-            print(f"Erreur sur un commit : {e}")
-            continue
-
-    if not minutes_list:
-        return "Aucun commit trouvé ou format incorrect."
-
-    minute_counts = Counter(minutes_list)
-    minutes = list(minute_counts.keys())
-    counts = list(minute_counts.values())
-
-    try:
-        return render_template("commits.html", minutes=minutes, counts=counts)
-    except Exception as e:
-        print("Erreur de rendu template :", e)
-        return abort(500, description="Erreur template commits.html")
 
 
 
