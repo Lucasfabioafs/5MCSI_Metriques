@@ -120,6 +120,11 @@ def monhisto():
 @app.route("/contact/")
 def affichecontact():
     return render_template("contact.html")
+
+@app.route("/commits/")
+def affichecommits():
+    return render_template("commits.html")
+ 
 </xmp></code></pre></p>
 <p>Notions acquises dans cet exercice : Nous avons vu lors de cet exercice comment créer et où déposer les fichiers HTML lorsque l'on utise le Framework Flask.
 Nous avons également découvert que les Framework (cadre de travail) nous imposent une structure de travail où chaque élément doit être à sa place.
