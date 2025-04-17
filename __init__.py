@@ -11,6 +11,11 @@ app = Flask(__name__)
 @app.route("/rapport/")
 def mongraphique():
     return render_template("graphique.html")
+
+@app.route("/histogramme/")
+def monhisto():
+    return render_template("histogramme.html")
+
   
 @app.route('/tawarano/')
 def meteo():
