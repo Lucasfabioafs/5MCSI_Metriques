@@ -4,10 +4,11 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Contact</title>
-   <style>
+  <style>
     body {
       margin: 0;
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #ece9e6, #ffffff);
     }
 
     nav {
@@ -16,6 +17,9 @@
       display: flex;
       justify-content: center;
       box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
     }
 
     nav a {
@@ -30,21 +34,12 @@
       color: #FFD700;
     }
 
-    .content {
-      padding: 40px;
-      text-align: center;
-    }
-  
-  <style>
-    body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background: linear-gradient(135deg, #ece9e6, #ffffff);
-      margin: 0;
-      padding: 0;
+    .page-wrapper {
       display: flex;
       justify-content: center;
       align-items: center;
-      min-height: 100vh;
+      min-height: calc(100vh - 80px); /* espace restant sans le menu */
+      padding: 40px 20px;
     }
 
     .contact-container {
@@ -129,16 +124,19 @@
     <a href="/rapport/">Graphique</a>
     <a href="/contact/">Contact</a>
   </nav>
-  <div class="contact-container">
-    <h2>Contactez-nous</h2>
-    <form id="contactForm">
-      <input type="text" placeholder="Votre nom" required />
-      <input type="email" placeholder="Votre email" required />
-      <textarea rows="5" placeholder="Votre message" required></textarea>
-      <button type="submit">Envoyer</button>
-    </form>
-    <div class="confirmation" id="confirmationMessage">
-      Merci pour votre message ! Nous reviendrons vers vous très vite.
+
+  <div class="page-wrapper">
+    <div class="contact-container">
+      <h2>Contactez-nous</h2>
+      <form id="contactForm">
+        <input type="text" placeholder="Votre nom" required />
+        <input type="email" placeholder="Votre email" required />
+        <textarea rows="5" placeholder="Votre message" required></textarea>
+        <button type="submit">Envoyer</button>
+      </form>
+      <div class="confirmation" id="confirmationMessage">
+        Merci pour votre message ! Nous reviendrons vers vous très vite.
+      </div>
     </div>
   </div>
 
@@ -157,4 +155,3 @@
   </script>
 </body>
 </html>
-
