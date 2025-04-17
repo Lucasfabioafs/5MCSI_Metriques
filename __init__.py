@@ -4,30 +4,48 @@ from flask import json
 from datetime import datetime
 from urllib.request import urlopen
 import sqlite3
-                                                                                                                                       
+from collections import Counter
+import requests
+from datetime import datetime
+from flask import render_template
+
 app = Flask(__name__)  
+
 
 @app.route('/commits/')
 def commits():
     url = "https://api.github.com/repos/OpenRSI/5MCSI_Metriques/commits"
     response = requests.get(url)
-    data = response.json()
+    
+    try:
+        data = response.json()
+    except Exception as e:
+        return f"Erreur lors de la lecture de l'API GitHub : {e}"
+
+    # Vérifie si c’est une erreur de quota GitHub
+    if isinstance(data, dict) and data.get('message'):
+        return f"Erreur GitHub : {data['message']}"
 
     minutes_list = []
+
     for commit in data:
         try:
             date_str = commit["commit"]["author"]["date"]
             date_obj = datetime.strptime(date_str, '%Y-%m-%dT%H:%M:%SZ')
             minutes_list.append(date_obj.strftime('%H:%M'))
         except Exception as e:
-            print(f"Erreur: {e}")
+            print(f"Erreur dans un commit : {e}")
+            continue
+
+    if not minutes_list:
+        return "Aucun commit trouvé ou problème dans les données."
 
     minute_counts = Counter(minutes_list)
     minutes = list(minute_counts.keys())
     counts = list(minute_counts.values())
 
     return render_template("commits.html", minutes=minutes, counts=counts)
-  
+        
 @app.route("/rapport/")
 def mongraphique():
     return render_template("graphique.html")
