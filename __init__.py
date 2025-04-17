@@ -38,6 +38,7 @@ def affichecommits():
 
     return render_template("commits.html", minutes=minutes, counts=counts)
 
+
 # ✅ AUTRES ROUTES
 @app.route("/rapport/")
 def mongraphique():
