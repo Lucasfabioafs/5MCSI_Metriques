@@ -4,14 +4,6 @@ from flask import json
 from datetime import datetime
 from urllib.request import urlopen
 import sqlite3
-from collections import Counter
-import requests
-from datetime import datetime
-from flask import render_template
-from collections import Counter
-import requests
-from datetime import datetime
-from flask import render_template, abort
 
 
 
