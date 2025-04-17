@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Contact</title>
-    <style>
+  <style>
     body {
       background-color: #e6f0ff; /* BLEU CLAIR sur tout le fond */
       margin: 0;
@@ -36,7 +36,7 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      min-height: calc(100vh - 80px); /* hauteur moins le menu */
+      min-height: calc(100vh - 80px);
       padding: 40px 20px;
     }
 
@@ -53,11 +53,77 @@
     .contact-container:hover {
       transform: translateY(-5px);
     }
-  </style>
 
+    .contact-container h2 {
+      margin-bottom: 20px;
+      font-size: 28px;
+      text-align: center;
+      color: #333;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+
+    input, textarea {
+      padding: 14px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      font-size: 16px;
+      transition: border-color 0.3s ease;
+    }
+
+    input:focus, textarea:focus {
+      outline: none;
+      border-color: #007BFF;
+    }
+
+    button {
+      padding: 14px;
+      border: none;
+      background-color: #007BFF;
+      color: white;
+      font-size: 16px;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #0056b3;
+    }
+
+    .confirmation {
+      margin-top: 20px;
+      background-color: #d4edda;
+      color: #155724;
+      padding: 14px;
+      border-radius: 8px;
+      display: none;
+      text-align: center;
+    }
+
+    @media (max-width: 600px) {
+      .contact-container {
+        padding: 20px;
+      }
+
+      .contact-container h2 {
+        font-size: 24px;
+      }
+
+      nav a {
+        font-size: 16px;
+        margin: 0 10px;
+      }
+    }
+  </style>
 </head>
 <body>
-    <nav>
+
+  <nav>
     <a href="/">Accueil</a>
     <a href="/histogramme/">Histogramme</a>
     <a href="/rapport/">Graphique</a>
@@ -93,5 +159,6 @@
       }, 4000);
     });
   </script>
+
 </body>
 </html>
