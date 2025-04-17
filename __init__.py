@@ -5,7 +5,6 @@ from datetime import datetime
 from urllib.request import urlopen
 import sqlite3
 
-import requests
 from collections import Counter
 from flask import Flask, render_template, jsonify
 from datetime import datetime
