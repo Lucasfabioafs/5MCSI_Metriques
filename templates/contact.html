@@ -1,1 +1,124 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #ece9e6, #ffffff);
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+    }
+
+    .contact-container {
+      background: white;
+      padding: 40px;
+      border-radius: 16px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+      width: 100%;
+      max-width: 600px;
+      transition: transform 0.3s ease;
+    }
+
+    .contact-container:hover {
+      transform: translateY(-5px);
+    }
+
+    h2 {
+      margin-bottom: 20px;
+      font-size: 28px;
+      text-align: center;
+      color: #333;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+
+    input, textarea {
+      padding: 14px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      font-size: 16px;
+      transition: border-color 0.3s ease;
+    }
+
+    input:focus, textarea:focus {
+      outline: none;
+      border-color: #007BFF;
+    }
+
+    button {
+      padding: 14px;
+      border: none;
+      background-color: #007BFF;
+      color: white;
+      font-size: 16px;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #0056b3;
+    }
+
+    .confirmation {
+      margin-top: 20px;
+      background-color: #d4edda;
+      color: #155724;
+      padding: 14px;
+      border-radius: 8px;
+      display: none;
+      text-align: center;
+    }
+
+    @media (max-width: 600px) {
+      .contact-container {
+        padding: 20px;
+      }
+
+      h2 {
+        font-size: 24px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="contact-container">
+    <h2>Contactez-nous</h2>
+    <form id="contactForm">
+      <input type="text" placeholder="Votre nom" required />
+      <input type="email" placeholder="Votre email" required />
+      <textarea rows="5" placeholder="Votre message" required></textarea>
+      <button type="submit">Envoyer</button>
+    </form>
+    <div class="confirmation" id="confirmationMessage">
+      Merci pour votre message ! Nous reviendrons vers vous très vite.
+    </div>
+  </div>
+
+  <script>
+    const form = document.getElementById('contactForm');
+    const confirmation = document.getElementById('confirmationMessage');
+
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      confirmation.style.display = 'block';
+      form.reset();
+      setTimeout(() => {
+        confirmation.style.display = 'none';
+      }, 4000);
+    });
+  </script>
+</body>
+</html>
 
