@@ -16,6 +16,10 @@ def mongraphique():
 def monhisto():
     return render_template("histogramme.html")
 
+@app.route("/contact/")
+def monhisto():
+    return render_template("contact.html")
+
   
 @app.route('/tawarano/')
 def meteo():
