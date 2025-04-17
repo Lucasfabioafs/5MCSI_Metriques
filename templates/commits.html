@@ -1,1 +1,86 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Commits Minute par Minute</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: #f0f0f0;
+    }
+
+    nav {
+      background-color: #007BFF;
+      padding: 15px 30px;
+      display: flex;
+      justify-content: center;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      margin: 0 20px;
+      font-size: 18px;
+      transition: color 0.3s ease;
+    }
+
+    nav a:hover {
+      color: #FFD700;
+    }
+
+    .content {
+      padding: 40px;
+      text-align: center;
+    }
+
+    canvas {
+      max-width: 800px;
+      margin: auto;
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <a href="/histogramme/">Histogramme</a>
+    <a href="/rapport/">Graphique</a>
+    <a href="/contact/">Contact</a>
+    <a href="/commits/">Commits</a>
+  </nav>
+
+  <div class="content">
+    <h2>Nombre de commits (par minute)</h2>
+    <canvas id="commitChart"></canvas>
+  </div>
+
+  <script>
+    const ctx = document.getElementById('commitChart').getContext('2d');
+    const commitChart = new Chart(ctx, {
+      type: 'bar',
+      data: {
+        labels: {{ minutes|tojson }},
+        datasets: [{
+          label: 'Commits par minute',
+          data: {{ counts|tojson }},
+          backgroundColor: 'rgba(54, 162, 235, 0.6)',
+          borderColor: 'rgba(54, 162, 235, 1)',
+          borderWidth: 1
+        }]
+      },
+      options: {
+        scales: {
+          y: {
+            beginAtZero: true,
+            ticks: {
+              stepSize: 1
+            }
+          }
+        }
+      }
+    });
+  </script>
+</body>
+</html>
 
